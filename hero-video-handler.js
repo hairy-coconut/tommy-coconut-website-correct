@@ -1,103 +1,209 @@
 /**
  * Tommy Coconut Hero Video Handler
- * Ensures proper video loading with fallback support
+ * Prevents layout corruption by ensuring stable video loading with proper fallbacks
  */
 
 document.addEventListener('DOMContentLoaded', function() {
     const heroVideo = document.querySelector('.hero-video');
     const heroVideoPlaceholder = document.querySelector('.hero-video-placeholder');
     const heroVideoContainer = document.querySelector('.hero-video-container');
+    const heroSection = document.querySelector('.hero');
     
     console.log('🎥 Tommy Coconut Hero Video Handler initialized');
     
+    // CRITICAL: Stabilize hero section layout immediately
+    stabilizeHeroLayout();
+    
     if (!heroVideo) {
-        console.warn('No hero video element found');
+        console.warn('No hero video element found - using fallback');
+        ensureFallbackDisplay();
         return;
     }
     
-    // Function to handle video load success
-    function handleVideoLoad() {
-        console.log('✅ Hero video loaded successfully');
-        if (heroVideoPlaceholder) {
-            heroVideoPlaceholder.style.display = 'none';
+    // Set up video for stable loading
+    setupVideoAttributes();
+    
+    // Initialize video loading with timeout protection
+    initializeVideoLoading();
+    
+    /**
+     * Prevent layout corruption by setting stable dimensions immediately
+     */
+    function stabilizeHeroLayout() {
+        if (heroSection) {
+            heroSection.style.minHeight = '100vh';
+            heroSection.style.position = 'relative';
+            heroSection.style.overflow = 'hidden';
+            heroSection.style.display = 'flex';
+            heroSection.style.alignItems = 'center';
+            heroSection.style.justifyContent = 'center';
+            heroSection.style.textAlign = 'center';
         }
-        heroVideo.style.opacity = '1';
-        heroVideo.style.display = 'block';
         
-        // Add loaded class for CSS transitions
         if (heroVideoContainer) {
-            heroVideoContainer.classList.add('video-loaded');
+            heroVideoContainer.style.position = 'absolute';
+            heroVideoContainer.style.top = '0';
+            heroVideoContainer.style.left = '0';
+            heroVideoContainer.style.width = '100%';
+            heroVideoContainer.style.height = '100%';
+            heroVideoContainer.style.zIndex = '0';
+            heroVideoContainer.style.overflow = 'hidden';
         }
         
-        // Ensure video plays
-        heroVideo.play().catch(e => {
-            console.warn('Video autoplay prevented:', e);
-        });
+        if (heroVideoPlaceholder) {
+            heroVideoPlaceholder.style.position = 'absolute';
+            heroVideoPlaceholder.style.top = '0';
+            heroVideoPlaceholder.style.left = '0';
+            heroVideoPlaceholder.style.width = '100%';
+            heroVideoPlaceholder.style.height = '100%';
+            heroVideoPlaceholder.style.zIndex = '0';
+            heroVideoPlaceholder.style.opacity = '1';
+            heroVideoPlaceholder.style.display = 'block';
+            heroVideoPlaceholder.style.background = 'url("/images/properties/villa-hero.jpg") center/cover no-repeat';
+        }
     }
     
-    // Function to handle video load failure  
-    function handleVideoError(error) {
-        console.warn('❌ Hero video failed to load:', error);
+    /**
+     * Configure video attributes for optimal loading
+     */
+    function setupVideoAttributes() {
+        // Critical attributes to prevent layout shifts
+        heroVideo.style.position = 'absolute';
+        heroVideo.style.top = '0';
+        heroVideo.style.left = '0';
+        heroVideo.style.width = '100%';
+        heroVideo.style.height = '100%';
+        heroVideo.style.objectFit = 'cover';
+        heroVideo.style.zIndex = '1';
+        heroVideo.style.opacity = '0';
+        heroVideo.style.transition = 'opacity 0.5s ease';
+        
+        // Video playback attributes
+        heroVideo.muted = true;
+        heroVideo.playsInline = true;
+        heroVideo.autoplay = true;
+        heroVideo.loop = true;
+        heroVideo.controls = false;
+        heroVideo.preload = 'metadata';
+        
+        // Prevent right-click context menu
+        heroVideo.oncontextmenu = () => false;
+    }
+    
+    /**
+     * Initialize video loading with comprehensive error handling
+     */
+    function initializeVideoLoading() {
+        let videoLoadAttempted = false;
+        let videoLoadTimeout;
+        
+        // Function to handle successful video loading
+        function handleVideoSuccess() {
+            console.log('✅ Hero video loaded successfully');
+            clearTimeout(videoLoadTimeout);
+            
+            // Smoothly transition from placeholder to video
+            heroVideo.style.opacity = '1';
+            
+            if (heroVideoPlaceholder) {
+                setTimeout(() => {
+                    heroVideoPlaceholder.style.opacity = '0';
+                }, 300);
+            }
+            
+            if (heroVideoContainer) {
+                heroVideoContainer.classList.add('video-loaded');
+            }
+            
+            // Start playback
+            heroVideo.play().catch(error => {
+                console.warn('Video autoplay prevented:', error);
+                // Autoplay failed, but video is loaded - that's fine
+            });
+        }
+        
+        // Function to handle video loading failure
+        function handleVideoError(error) {
+            console.warn('❌ Hero video failed to load:', error);
+            clearTimeout(videoLoadTimeout);
+            ensureFallbackDisplay();
+        }
+        
+        // Set up comprehensive event listeners
+        const successEvents = ['loadeddata', 'loadedmetadata', 'canplay'];
+        const errorEvents = ['error', 'abort', 'emptied'];
+        
+        successEvents.forEach(event => {
+            heroVideo.addEventListener(event, () => {
+                if (!videoLoadAttempted && heroVideo.readyState >= 2) {
+                    videoLoadAttempted = true;
+                    handleVideoSuccess();
+                }
+            });
+        });
+        
+        errorEvents.forEach(event => {
+            heroVideo.addEventListener(event, handleVideoError);
+        });
+        
+        // Stalled event handling
+        heroVideo.addEventListener('stalled', () => {
+            console.warn('Video loading stalled');
+        });
+        
+        // Start loading the video
+        try {
+            heroVideo.load();
+        } catch (error) {
+            console.warn('Video load() failed:', error);
+            handleVideoError(error);
+            return;
+        }
+        
+        // Critical timeout to prevent indefinite waiting
+        videoLoadTimeout = setTimeout(() => {
+            if (!videoLoadAttempted) {
+                if (heroVideo.readyState >= 1) {
+                    console.log('Video has some data, attempting to show');
+                    videoLoadAttempted = true;
+                    handleVideoSuccess();
+                } else {
+                    console.warn('Video load timeout - falling back to image');
+                    handleVideoError('timeout');
+                }
+            }
+        }, 2000);
+        
+        // Immediate attempt if video is already ready
+        if (heroVideo.readyState >= 2) {
+            setTimeout(() => {
+                if (!videoLoadAttempted) {
+                    videoLoadAttempted = true;
+                    handleVideoSuccess();
+                }
+            }, 100);
+        }
+    }
+    
+    /**
+     * Ensure fallback image is properly displayed
+     */
+    function ensureFallbackDisplay() {
         if (heroVideo) {
             heroVideo.style.display = 'none';
             heroVideo.style.opacity = '0';
         }
+        
         if (heroVideoPlaceholder) {
             heroVideoPlaceholder.style.display = 'block';
+            heroVideoPlaceholder.style.opacity = '1';
+        }
+        
+        if (heroVideoContainer) {
+            heroVideoContainer.classList.remove('video-loaded');
+            heroVideoContainer.classList.add('video-error');
         }
     }
-    
-    // Set initial state - video visible by default
-    heroVideo.style.opacity = '1';
-    heroVideo.style.display = 'block';
-    heroVideo.style.transition = 'opacity 0.5s ease';
-    
-    // Ensure video attributes are set correctly
-    heroVideo.muted = true;
-    heroVideo.playsInline = true;
-    heroVideo.autoplay = true;
-    heroVideo.loop = true;
-    heroVideo.controls = false;
-    
-    // Add event listeners
-    heroVideo.addEventListener('loadeddata', handleVideoLoad);
-    heroVideo.addEventListener('loadedmetadata', handleVideoLoad);
-    heroVideo.addEventListener('canplay', handleVideoLoad);
-    heroVideo.addEventListener('canplaythrough', handleVideoLoad);
-    heroVideo.addEventListener('error', handleVideoError);
-    heroVideo.addEventListener('abort', handleVideoError);
-    heroVideo.addEventListener('stalled', () => {
-        console.warn('Video stalled');
-    });
-    
-    // Force video to load
-    heroVideo.load();
-    
-    // Immediate play attempt
-    setTimeout(() => {
-        if (heroVideo.readyState >= 2) {
-            handleVideoLoad();
-        } else {
-            console.log('Video not ready yet, waiting...');
-        }
-    }, 500);
-    
-    // Fallback timeout - if video doesn't load within 3 seconds, still try to show it
-    const fallbackTimeout = setTimeout(() => {
-        console.log('Video timeout reached, current state:', heroVideo.readyState);
-        if (heroVideo.readyState >= 1) {
-            // Video has some data, try to show it anyway
-            handleVideoLoad();
-        } else {
-            console.warn('Hero video load timeout, using fallback image');
-            handleVideoError('timeout');
-        }
-    }, 3000);
-    
-    // Clear timeout if video loads successfully
-    heroVideo.addEventListener('loadeddata', () => {
-        clearTimeout(fallbackTimeout);
-    });
 });
 
 /**
