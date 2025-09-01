@@ -1,0 +1,1003 @@
+/* Coconut Cartel Page - Premium Redesign */
+
+/* Section 1: Page Header - No changes required */
+.page-header {
+    background: var(--secondary);
+    color: var(--neutral-white);
+    padding: 40px 0 80px;
+    text-align: center;
+}
+
+.page-header h1 {
+    color: var(--neutral-white);
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.page-header p {
+    color: var(--neutral-white);
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+/* Section 2: What is the Coconut Cartel */
+.cartel-intro {
+    padding: 80px 0;
+    background: var(--neutral-white);
+}
+
+.intro-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.intro-text h2 {
+    color: var(--secondary);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.intro-text p {
+    color: var(--secondary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.cartel-features {
+    margin-top: 2rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--neutral-light);
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateX(10px);
+}
+
+.feature-item i {
+    color: var(--primary);
+    font-size: 1.5rem;
+    width: 30px;
+    text-align: center;
+}
+
+.feature-item span {
+    color: var(--secondary);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.intro-image {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.intro-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.intro-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Section 3: Perks by Visit Level - Visual Tier System */
+.perks-section {
+    padding: 80px 0;
+    background: var(--neutral-light);
+}
+
+.perks-section h2 {
+    color: var(--secondary);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.perks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.perk-card {
+    background: var(--neutral-white);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.perk-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #CD7F32, #C0C0C0, #FFD700);
+}
+
+.perk-card.featured {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.perk-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.perk-card.featured:hover {
+    transform: scale(1.05) translateY(-10px);
+}
+
+.perk-level {
+    margin-bottom: 2rem;
+}
+
+.perk-level h3 {
+    color: var(--secondary);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.level-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.perk-card:nth-child(1) .level-badge {
+    background: linear-gradient(135deg, #CD7F32, #B8860B);
+    color: var(--neutral-white);
+}
+
+.perk-card:nth-child(2) .level-badge {
+    background: linear-gradient(135deg, #C0C0C0, #A9A9A9);
+    color: var(--neutral-white);
+}
+
+.perk-card:nth-child(3) .level-badge {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: var(--secondary);
+}
+
+.perk-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.perk-content li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    color: var(--secondary);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.perk-content li i {
+    color: var(--primary);
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+}
+
+/* Section 4: Community Stories - Premium Testimonial Style */
+.community-stories {
+    padding: 80px 0;
+    background: var(--neutral-white);
+}
+
+.community-stories h2 {
+    color: var(--secondary);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.stories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.story-card {
+    background: var(--neutral-light);
+    border-radius: 20px;
+    padding: 2.5rem;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.story-card:hover {
+    transform: translateY(-5px);
+}
+
+.story-card::before {
+    content: '"';
+    position: absolute;
+    top: 1rem;
+    left: 2rem;
+    font-size: 4rem;
+    color: var(--primary);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    opacity: 0.3;
+    line-height: 1;
+}
+
+.story-content p {
+    color: var(--secondary);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+}
+
+.story-author {
+    border-top: 2px solid var(--primary);
+    padding-top: 1.5rem;
+}
+
+.story-author strong {
+    display: block;
+    color: var(--secondary);
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.story-author span {
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+/* Section 5: Exclusive Member Benefits */
+.member-benefits {
+    padding: 80px 0;
+    background: var(--neutral-light);
+}
+
+.member-benefits h2 {
+    color: var(--secondary);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.benefit-item {
+    background: var(--neutral-white);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.benefit-item:hover {
+    transform: translateY(-10px);
+}
+
+.benefit-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.benefit-item:hover .benefit-icon {
+    transform: scale(1.1);
+}
+
+.benefit-icon i {
+    color: var(--neutral-white);
+    font-size: 2rem;
+}
+
+.benefit-item h3 {
+    color: var(--secondary);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.benefit-item p {
+    color: var(--secondary);
+    line-height: 1.6;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+/* Section 6: Ready to Join the Cartel */
+.join-section {
+    padding: 80px 0;
+    background: var(--secondary);
+    color: var(--neutral-white);
+}
+
+.join-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.join-content h2 {
+    color: var(--neutral-white);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.join-content > p {
+    color: var(--neutral-white);
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.join-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.join-option {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.join-option h3 {
+    color: var(--neutral-white);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.join-option p {
+    color: var(--neutral-white);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    opacity: 0.9;
+}
+
+.join-option .btn {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Section 7: Cartel Members in Action Gallery */
+.member-gallery {
+    padding: 80px 0;
+    background: var(--neutral-white);
+}
+
+.member-gallery h2 {
+    color: var(--secondary);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(
+        to top,
+        rgba(10, 73, 86, 0.9) 0%,
+        rgba(10, 73, 86, 0.7) 50%,
+        rgba(10, 73, 86, 0) 100%
+    );
+    color: var(--neutral-white);
+    padding: 2rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+.gallery-overlay p {
+    color: var(--neutral-white);
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .perks-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .perk-card.featured {
+        transform: none;
+    }
+    
+    .perk-card.featured:hover {
+        transform: translateY(-10px);
+    }
+    
+    .join-options {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .intro-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .page-header p {
+        font-size: 1.1rem;
+    }
+    
+    .intro-text h2,
+    .perks-section h2,
+    .community-stories h2,
+    .member-benefits h2,
+    .join-content h2,
+    .member-gallery h2 {
+        font-size: 2rem;
+    }
+    
+    .stories-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .perk-card,
+    .story-card,
+    .benefit-item,
+    .join-option {
+        padding: 2rem;
+    }
+    
+    .feature-item {
+        padding: 0.75rem;
+    }
+    
+    .feature-item i {
+        font-size: 1.2rem;
+    }
+    
+    .feature-item span {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header {
+        padding: 80px 0 60px;
+    }
+    
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .page-header p {
+        font-size: 1rem;
+    }
+    
+    .intro-text h2,
+    .perks-section h2,
+    .community-stories h2,
+    .member-benefits h2,
+    .join-content h2,
+    .member-gallery h2 {
+        font-size: 1.8rem;
+    }
+    
+    .perk-card,
+    .story-card,
+    .benefit-item,
+    .join-option {
+        padding: 1.5rem;
+    }
+    
+    .intro-image {
+        height: 300px;
+    }
+    
+    .intro-image img {
+        height: 300px;
+    }
+    
+    .gallery-item img {
+        height: 200px;
+    }
+    
+    .treasure-features {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .treasure-feature {
+        text-align: center;
+    }
+    
+    .loyalty-treasure .treasure-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .treasure-icon {
+        font-size: 3rem;
+    }
+}
+
+/* Your Loyalty is Your Treasure Section */
+.loyalty-treasure {
+    background: linear-gradient(135deg, var(--neutral-light) 0%, var(--neutral-white) 100%);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.loyalty-treasure::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="coconut" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="2" fill="%2378E4D9" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23coconut)"/></svg>');
+    z-index: 1;
+}
+
+.treasure-content {
+    position: relative;
+    z-index: 2;
+}
+
+.treasure-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.treasure-header h2 {
+    color: var(--secondary);
+    font-size: 2.5rem;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.treasure-icon {
+    font-size: 4rem;
+    opacity: 0.8;
+    animation: treasure-float 3s ease-in-out infinite;
+}
+
+@keyframes treasure-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.treasure-description {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.treasure-description p {
+    color: var(--secondary);
+    font-size: 1.3rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.treasure-features {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+.treasure-feature {
+    flex: 1;
+    text-align: center;
+    padding: 2rem;
+    background: var(--neutral-white);
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.treasure-feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary);
+}
+
+.treasure-feature .feature-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: var(--neutral-white);
+    font-size: 2rem;
+    box-shadow: 0 4px 15px rgba(120, 228, 217, 0.3);
+}
+
+.treasure-feature .feature-content h3 {
+    color: var(--secondary);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.treasure-feature .feature-content p {
+    color: var(--secondary);
+    font-size: 1rem;
+    line-height: 1.5;
+    opacity: 0.8;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.treasure-cta {
+    text-align: center;
+}
+
+.treasure-cta .cta-text {
+    color: var(--secondary);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.treasure-cta .btn {
+    background: linear-gradient(135deg, var(--primary) 0%, #22c55e 100%);
+    color: var(--neutral-white);
+    padding: 15px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(120, 228, 217, 0.3);
+}
+
+.treasure-cta .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(120, 228, 217, 0.4);
+}
+
+/* Mobile responsiveness for treasure section */
+@media (max-width: 768px) {
+    .treasure-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .treasure-header h2 {
+        font-size: 2rem;
+    }
+    
+    .treasure-icon {
+        font-size: 3rem;
+    }
+    
+    .treasure-description p {
+        font-size: 1.1rem;
+    }
+    
+    .treasure-features {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .chapter-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .chapter-visual {
+        order: -1;
+    }
+}
+
+/* The Ultimate Chapter Section */
+.ultimate-chapter {
+    background: linear-gradient(135deg, var(--secondary) 0%, #0A3D3D 100%);
+    color: var(--neutral-white);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.ultimate-chapter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="palm" patternUnits="userSpaceOnUse" width="50" height="50"><path d="M25 25c0-5 5-10 10-10s10 5 10 10-5 10-10 10-10-5-10-10z" fill="%23FFFFFF" opacity="0.03"/></pattern></defs><rect width="100" height="100" fill="url(%23palm)"/></svg>');
+    z-index: 1;
+}
+
+.chapter-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.chapter-text {
+    flex: 2;
+}
+
+.chapter-text h3 {
+    color: var(--neutral-white);
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.chapter-text p {
+    color: var(--neutral-white);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.chapter-cta .btn {
+    background: transparent;
+    border: 2px solid var(--neutral-white);
+    color: var(--neutral-white);
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.chapter-cta .btn:hover {
+    background: var(--neutral-white);
+    color: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+.chapter-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ownership-badge {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    transform: rotate(-5deg);
+    transition: all 0.3s ease;
+    border: 3px solid var(--neutral-white);
+}
+
+.ownership-badge:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+.badge-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: badge-float 3s ease-in-out infinite;
+}
+
+@keyframes badge-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+.badge-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.badge-title {
+    color: var(--secondary);
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.badge-subtitle {
+    color: var(--secondary);
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    opacity: 0.8;
+}
+
+/* Mobile responsiveness for ultimate chapter */
+@media (max-width: 768px) {
+    .chapter-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .chapter-text h3 {
+        font-size: 1.8rem;
+    }
+    
+    .chapter-text p {
+        font-size: 1.1rem;
+    }
+    
+    .chapter-visual {
+        order: -1;
+    }
+    
+    .ownership-badge {
+        transform: rotate(0deg);
+        padding: 2rem;
+    }
+} 

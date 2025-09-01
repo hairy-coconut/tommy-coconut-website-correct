@@ -1,0 +1,342 @@
+/* Tommy Coconut Treasure Map - Standalone CSS
+ * Isolated from homepage to prevent cross-contamination
+ */
+
+/* CSS Variables - Only treasure map essentials */
+:root {
+    --tc-primary: #78E4D9;
+    --tc-primary-dark: #5BBEB6;
+    --tc-navy: #0A4956;
+    --tc-navy-dark: #083A45;
+    --tc-navy-light: #1A5A6A;
+    --tc-white: #FFFFFF;
+    --tc-cream: #F8F6F3;
+    --tc-coral: #F7B7A3;
+    --tc-success: #22C55E;
+    
+    --tc-space-2: 0.5rem;
+    --tc-space-3: 0.75rem;
+    --tc-space-4: 1rem;
+    --tc-space-6: 1.5rem;
+    --tc-space-8: 2rem;
+    --tc-space-12: 3rem;
+    --tc-space-16: 4rem;
+    --tc-space-20: 5rem;
+    
+    --tc-radius-md: 8px;
+    --tc-radius-xl: 12px;
+    --tc-radius-2xl: 16px;
+    --tc-radius-full: 50%;
+    
+    --tc-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --tc-shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
+    --tc-shadow-xl: 0 12px 40px rgba(0, 0, 0, 0.2);
+    
+    --tc-transition-fast: all 0.2s ease;
+    --tc-transition-normal: all 0.3s ease;
+    
+    --tc-text-sm: 0.875rem;
+    --tc-text-base: 1rem;
+    --tc-text-lg: 1.125rem;
+    --tc-text-xl: 1.25rem;
+    --tc-text-2xl: 1.5rem;
+    
+    --tc-weight-medium: 500;
+    --tc-weight-semibold: 600;
+    --tc-weight-bold: 700;
+    
+    --tc-leading-relaxed: 1.6;
+    
+    --tc-container-md: 768px;
+    --tc-gutter: 1rem;
+}
+
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", system-ui, sans-serif;
+    line-height: 1.5;
+    color: var(--tc-navy);
+    background: var(--tc-white);
+}
+
+/* Treasure Map Specific Styles */
+.treasure-map-container {
+    background: linear-gradient(135deg, #001F3F 0%, var(--tc-navy-dark) 100%);
+    min-height: 100vh;
+    padding: var(--tc-space-8) 0;
+    color: var(--tc-white);
+}
+
+.treasure-map-content {
+    max-width: var(--tc-container-md);
+    margin: 0 auto;
+    padding: 0 var(--tc-gutter);
+    text-align: center;
+}
+
+.treasure-map-header {
+    margin-bottom: var(--tc-space-12);
+}
+
+.treasure-map-header h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: var(--tc-weight-bold);
+    margin-bottom: var(--tc-space-4);
+    color: var(--tc-white);
+}
+
+.treasure-map-header p {
+    font-size: var(--tc-text-lg);
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Interactive Map Grid */
+.treasure-islands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--tc-space-6);
+    margin: var(--tc-space-12) 0;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.treasure-island {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(120, 228, 217, 0.3);
+    border-radius: var(--tc-radius-2xl);
+    padding: var(--tc-space-6);
+    cursor: pointer;
+    transition: var(--tc-transition-normal);
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.treasure-island:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--tc-primary);
+    background: rgba(120, 228, 217, 0.15);
+    box-shadow: 0 20px 60px rgba(120, 228, 217, 0.3);
+}
+
+.treasure-island::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(120, 228, 217, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.treasure-island:hover::before {
+    left: 100%;
+}
+
+.island-icon {
+    font-size: 3rem;
+    margin-bottom: var(--tc-space-4);
+    display: block;
+}
+
+.island-title {
+    font-size: var(--tc-text-xl);
+    font-weight: var(--tc-weight-bold);
+    color: var(--tc-white);
+    margin-bottom: var(--tc-space-2);
+}
+
+.island-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--tc-text-sm);
+}
+
+/* Villa Discovery Modal */
+.villa-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--tc-transition-normal);
+    padding: var(--tc-space-4);
+}
+
+.villa-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.villa-modal-content {
+    background: var(--tc-white);
+    border-radius: var(--tc-radius-2xl);
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    transform: scale(0.9);
+    transition: var(--tc-transition-normal);
+    box-shadow: var(--tc-shadow-xl);
+}
+
+.villa-modal.active .villa-modal-content {
+    transform: scale(1);
+}
+
+.villa-modal-header {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.villa-modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.villa-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: var(--tc-radius-full);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.25rem;
+    color: var(--tc-navy);
+    transition: var(--tc-transition-fast);
+}
+
+.villa-modal-close:hover {
+    background: var(--tc-white);
+    transform: scale(1.1);
+}
+
+.villa-modal-body {
+    padding: var(--tc-space-6);
+    color: var(--tc-navy);
+}
+
+.villa-modal-title {
+    font-size: var(--tc-text-2xl);
+    font-weight: var(--tc-weight-bold);
+    margin-bottom: var(--tc-space-4);
+    color: var(--tc-navy);
+}
+
+.villa-modal-description {
+    color: var(--tc-navy-light);
+    line-height: var(--tc-leading-relaxed);
+    margin-bottom: var(--tc-space-6);
+}
+
+.villa-modal-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--tc-space-2);
+    margin-bottom: var(--tc-space-6);
+}
+
+.villa-feature-tag {
+    background: rgba(120, 228, 217, 0.1);
+    color: var(--tc-primary-dark);
+    padding: var(--tc-space-2) var(--tc-space-3);
+    border-radius: var(--tc-radius-full);
+    font-size: var(--tc-text-sm);
+    font-weight: var(--tc-weight-medium);
+}
+
+.villa-modal-cta {
+    background: var(--tc-primary);
+    color: var(--tc-navy);
+    border: none;
+    padding: var(--tc-space-4) var(--tc-space-6);
+    border-radius: var(--tc-radius-xl);
+    font-size: var(--tc-text-base);
+    font-weight: var(--tc-weight-semibold);
+    cursor: pointer;
+    transition: var(--tc-transition-fast);
+    width: 100%;
+}
+
+.villa-modal-cta:hover {
+    background: var(--tc-primary-dark);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .treasure-islands-grid {
+        grid-template-columns: 1fr;
+        gap: var(--tc-space-4);
+    }
+    
+    .treasure-island {
+        min-height: 150px;
+        padding: var(--tc-space-4);
+    }
+    
+    .island-icon {
+        font-size: 2.5rem;
+    }
+    
+    .villa-modal-content {
+        margin: var(--tc-space-4);
+    }
+    
+    .villa-modal-body {
+        padding: var(--tc-space-4);
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.treasure-island {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.treasure-island:nth-child(1) { animation-delay: 0.1s; }
+.treasure-island:nth-child(2) { animation-delay: 0.2s; }
+.treasure-island:nth-child(3) { animation-delay: 0.3s; }
+.treasure-island:nth-child(4) { animation-delay: 0.4s; }
+.treasure-island:nth-child(5) { animation-delay: 0.5s; }
+.treasure-island:nth-child(6) { animation-delay: 0.6s; }

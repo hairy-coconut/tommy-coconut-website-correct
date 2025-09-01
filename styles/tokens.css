@@ -1,0 +1,263 @@
+/* Tommy Coconut Design Tokens - Unified System
+ * SINGLE SOURCE OF TRUTH for all design tokens
+ * Version: 2.0 - Comprehensive Design System
+ * Last Updated: 2025-08-29
+ */
+
+:root {
+  /* ===== BRAND COLORS ===== */
+  /* Primary Brand Colors */
+  --tc-primary: #78E4D9;        /* Tommy Coconut Teal - Main brand color */
+  --tc-primary-dark: #62D0C9;   /* Darker teal for hover states */
+  --tc-primary-light: #8DEAE0;  /* Lighter teal for backgrounds */
+  
+  /* Secondary Colors */
+  --tc-navy: #0A4956;           /* Ocean Blue - Text, navigation, headers */
+  --tc-navy-dark: #0C2D3A;      /* Darker navy for hero sections */
+  --tc-navy-light: #1B5A6B;     /* Lighter navy for subtle text */
+  
+  /* Accent Colors */
+  --tc-coral: #F7B7A3;          /* Pastel Coral - Accents, highlights */
+  --tc-gold: #E7B868;           /* Gold accents for premium elements */
+  --tc-pink: #F7CBD9;           /* Soft pink for special highlights */
+  
+  /* Neutral Colors */
+  --tc-white: #FFFFFF;          /* Pure white */
+  --tc-cream: #F6F7F5;          /* Light cream backgrounds */
+  --tc-sand: #F5F5DC;           /* Sand color for warm backgrounds */
+  --tc-coconut: #FFF9F2;        /* Coconut white - warm white variant */
+  
+  /* Semantic Colors */
+  --tc-success: #22c55e;        /* Success states */
+  --tc-warning: #f59e0b;        /* Warning states */
+  --tc-error: #ef4444;          /* Error states */
+  --tc-info: var(--tc-primary); /* Info states use brand teal */
+  
+  /* WhatsApp Brand */
+  --tc-whatsapp: #25D366;       /* Official WhatsApp green */
+  --tc-whatsapp-dark: #1DA851;  /* WhatsApp hover state */
+  
+  /* ===== TYPOGRAPHY SYSTEM ===== */
+  /* Font Families */
+  --tc-font-primary: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --tc-font-fallback: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  
+  /* Font Weights */
+  --tc-weight-normal: 400;
+  --tc-weight-medium: 500;
+  --tc-weight-semibold: 600;
+  --tc-weight-bold: 700;
+  --tc-weight-extrabold: 800;
+  
+  /* Font Sizes */
+  --tc-text-xs: 0.75rem;        /* 12px */
+  --tc-text-sm: 0.875rem;       /* 14px */
+  --tc-text-base: 1rem;         /* 16px */
+  --tc-text-lg: 1.125rem;       /* 18px */
+  --tc-text-xl: 1.25rem;        /* 20px */
+  --tc-text-2xl: 1.5rem;        /* 24px */
+  --tc-text-3xl: 1.875rem;      /* 30px */
+  --tc-text-4xl: 2.25rem;       /* 36px */
+  --tc-text-5xl: 3rem;          /* 48px */
+  --tc-text-6xl: 3.75rem;       /* 60px */
+  --tc-text-7xl: 4.5rem;        /* 72px - for large hero text */
+  
+  /* Responsive Typography */
+  --tc-h1: clamp(32px, 5vw, 56px);    /* Hero headlines */
+  --tc-h2: clamp(24px, 3.5vw, 36px);  /* Section headings */
+  --tc-h3: clamp(20px, 2.5vw, 28px);  /* Subsection headings */
+  --tc-h4: clamp(18px, 2vw, 24px);    /* Component headings */
+  --tc-body: clamp(16px, 1.5vw, 18px); /* Body text */
+  --tc-caption: clamp(14px, 1.25vw, 16px); /* Captions, small text */
+  
+  /* Line Heights */
+  --tc-leading-tight: 1.25;
+  --tc-leading-snug: 1.375;
+  --tc-leading-normal: 1.5;
+  --tc-leading-relaxed: 1.625;
+  --tc-leading-loose: 2;
+  
+  /* ===== SPACING SYSTEM ===== */
+  /* Base Spacing Scale (4px base unit) */
+  --tc-space-1: 0.25rem;        /* 4px */
+  --tc-space-2: 0.5rem;         /* 8px */
+  --tc-space-3: 0.75rem;        /* 12px */
+  --tc-space-4: 1rem;           /* 16px */
+  --tc-space-5: 1.25rem;        /* 20px */
+  --tc-space-6: 1.5rem;         /* 24px */
+  --tc-space-8: 2rem;           /* 32px */
+  --tc-space-10: 2.5rem;        /* 40px */
+  --tc-space-12: 3rem;          /* 48px */
+  --tc-space-14: 3.5rem;        /* 56px */
+  --tc-space-16: 4rem;          /* 64px */
+  --tc-space-20: 5rem;          /* 80px */
+  --tc-space-24: 6rem;          /* 96px */
+  --tc-space-32: 8rem;          /* 128px */
+  
+  /* Semantic Spacing */
+  --tc-section-padding: var(--tc-space-16);     /* Standard section padding */
+  --tc-component-gap: var(--tc-space-6);        /* Gap between components */
+  --tc-content-gap: var(--tc-space-4);          /* Gap within content */
+  --tc-micro-gap: var(--tc-space-2);            /* Small gaps */
+  
+  /* ===== LAYOUT SYSTEM ===== */
+  /* Container Widths */
+  --tc-container-sm: 640px;     /* Small container */
+  --tc-container-md: 768px;     /* Medium container */
+  --tc-container-lg: 1024px;    /* Large container */
+  --tc-container-xl: 1280px;    /* Extra large container - max site width */
+  --tc-container-2xl: 1536px;   /* 2XL container for wide screens */
+  
+  /* Page Layout */
+  --tc-page-max: var(--tc-container-xl);  /* Max page width */
+  --tc-gutter: var(--tc-space-6);         /* Container side padding */
+  --tc-gutter-mobile: var(--tc-space-4);  /* Mobile container padding */
+  
+  /* ===== COMPONENT TOKENS ===== */
+  /* Border Radius */
+  --tc-radius-none: 0;
+  --tc-radius-sm: 0.25rem;      /* 4px */
+  --tc-radius-md: 0.5rem;       /* 8px */
+  --tc-radius-lg: 0.75rem;      /* 12px */
+  --tc-radius-xl: 1rem;         /* 16px */
+  --tc-radius-2xl: 1.5rem;      /* 24px */
+  --tc-radius-3xl: 2rem;        /* 32px */
+  --tc-radius-full: 9999px;     /* Full circle/pill */
+  
+  /* Shadows */
+  --tc-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --tc-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --tc-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --tc-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --tc-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  
+  /* Tommy Coconut Custom Shadows */
+  --tc-shadow-soft: 0 12px 30px rgba(12, 91, 107, 0.08);    /* Soft navy shadow */
+  --tc-shadow-brand: 0 8px 28px rgba(12, 45, 58, 0.18);     /* Brand shadow */
+  --tc-shadow-glow: 0 0 20px rgba(120, 228, 217, 0.3);      /* Teal glow effect */
+  
+  /* ===== TRANSITIONS & ANIMATIONS ===== */
+  /* Transition Durations */
+  --tc-duration-fast: 150ms;
+  --tc-duration-normal: 300ms;
+  --tc-duration-slow: 500ms;
+  --tc-duration-slower: 700ms;
+  
+  /* Transition Timing Functions */
+  --tc-ease-linear: linear;
+  --tc-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --tc-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --tc-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --tc-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Common Transitions */
+  --tc-transition-fast: all var(--tc-duration-fast) var(--tc-ease-out);
+  --tc-transition-normal: all var(--tc-duration-normal) var(--tc-ease-in-out);
+  --tc-transition-slow: all var(--tc-duration-slow) var(--tc-ease-in-out);
+  
+  /* ===== Z-INDEX SCALE ===== */
+  --tc-z-base: 0;
+  --tc-z-dropdown: 1000;
+  --tc-z-sticky: 1020;
+  --tc-z-fixed: 1030;
+  --tc-z-modal-backdrop: 1040;
+  --tc-z-modal: 1050;
+  --tc-z-popover: 1060;
+  --tc-z-tooltip: 1070;
+  --tc-z-toast: 1080;
+  --tc-z-max: 2147483647;
+  
+  /* ===== BREAKPOINTS ===== */
+  /* Media Query Breakpoints (for reference in CSS) */
+  --tc-screen-sm: 640px;
+  --tc-screen-md: 768px;
+  --tc-screen-lg: 1024px;
+  --tc-screen-xl: 1280px;
+  --tc-screen-2xl: 1536px;
+  
+  /* ===== LEGACY TOKEN ALIASES ===== */
+  /* These maintain compatibility with existing CSS while transitioning to new system */
+  
+  /* Legacy Color Aliases */
+  --primary: var(--tc-primary);
+  --secondary: var(--tc-navy);
+  --dark-navy: var(--tc-navy-dark);
+  --tommy-teal: var(--tc-primary);
+  --tc-teal: var(--tc-primary);
+  --tc-teal-700: var(--tc-primary-dark);
+  --neutral-white: var(--tc-white);
+  --neutral-light: var(--tc-cream);
+  --accent: var(--tc-coral);
+  --soft-coral: var(--tc-coral);
+  --sand: var(--tc-sand);
+  
+  /* Legacy Typography Aliases */
+  --font-family-primary: var(--tc-font-primary);
+  --font-weight-bold: var(--tc-weight-bold);
+  --font-weight-normal: var(--tc-weight-normal);
+  
+  /* Legacy Spacing Aliases */
+  --space-1: var(--tc-space-1);
+  --space-2: var(--tc-space-2);
+  --space-3: var(--tc-space-3);
+  --space-4: var(--tc-space-4);
+  --space-5: var(--tc-space-5);
+  --space-6: var(--tc-space-6);
+  --space-8: var(--tc-space-8);
+  --space-10: var(--tc-space-10);
+  --space-12: var(--tc-space-12);
+  --space-16: var(--tc-space-16);
+  --space-20: var(--tc-space-20);
+  
+  /* Legacy Layout Aliases */
+  --page-max: var(--tc-page-max);
+  --gutter: var(--tc-gutter);
+  --section-padding: var(--tc-section-padding);
+  
+  /* Legacy Component Aliases */
+  --radius-sm: var(--tc-radius-sm);
+  --radius-md: var(--tc-radius-md);
+  --radius-lg: var(--tc-radius-lg);
+  --radius-xl: var(--tc-radius-xl);
+  --radius-2xl: var(--tc-radius-2xl);
+  --radius-full: var(--tc-radius-full);
+  --tc-radius-pill: var(--tc-radius-full);
+  
+  /* Legacy Shadow Aliases */
+  --shadow-sm: var(--tc-shadow-sm);
+  --shadow-md: var(--tc-shadow-md);
+  --shadow-lg: var(--tc-shadow-lg);
+  --shadow-xl: var(--tc-shadow-xl);
+  --tc-shadow: var(--tc-shadow-brand);
+  
+  /* Legacy Transition Aliases */
+  --transition-fast: var(--tc-transition-fast);
+  --transition-normal: var(--tc-transition-normal);
+  --transition-slow: var(--tc-transition-slow);
+  
+  /* Legacy Z-index Aliases */
+  --z-dropdown: var(--tc-z-dropdown);
+  --z-sticky: var(--tc-z-sticky);
+  --z-fixed: var(--tc-z-fixed);
+  --z-modal-backdrop: var(--tc-z-modal-backdrop);
+  --z-modal: var(--tc-z-modal);
+  --z-popover: var(--tc-z-popover);
+  --z-tooltip: var(--tc-z-tooltip);
+  
+  /* Legacy Typography Size Aliases */
+  --text-xs: var(--tc-text-xs);
+  --text-sm: var(--tc-text-sm);
+  --text-base: var(--tc-text-base);
+  --text-lg: var(--tc-text-lg);
+  --text-xl: var(--tc-text-xl);
+  --text-2xl: var(--tc-text-2xl);
+  --text-3xl: var(--tc-text-3xl);
+  --text-4xl: var(--tc-text-4xl);
+  --text-5xl: var(--tc-text-5xl);
+  --text-6xl: var(--tc-text-6xl);
+  
+  /* Legacy Line Height Aliases */
+  --leading-tight: var(--tc-leading-tight);
+  --leading-normal: var(--tc-leading-normal);
+  --leading-relaxed: var(--tc-leading-relaxed);
+}

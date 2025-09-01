@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Map | Tommy Coconut Villas</title>
+    <meta name="description" content="Find your curated villa match with our Treasure Map. A concierge-crafted escape to the Dushi Life.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://tommycoconut.com/treasure-map">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tommycoconut.com/treasure-map">
+    <meta property="og:title" content="Treasure Map | Tommy Coconut Villas">
+    <meta property="og:description" content="Find your curated villa match with our Treasure Map. A concierge-crafted escape to the Dushi Life.">
+    <meta property="og:image" content="https://tommycoconut.com/images/hero/hero-main.jpg">
+    <meta property="og:site_name" content="Tommy Coconut">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://tommycoconut.com/treasure-map">
+    <meta name="twitter:title" content="Treasure Map | Tommy Coconut Villas">
+    <meta name="twitter:description" content="Find your curated villa match with our Treasure Map. A concierge-crafted escape to the Dushi Life.">
+    <meta name="twitter:image" content="https://tommycoconut.com/images/hero/hero-main.jpg">
+    
+    <!-- Standalone Treasure Map CSS - Isolated from homepage -->
+    <link rel="stylesheet" href="treasure-map-standalone.css">
+    
+    <!-- External Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        .treasure-map-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(12,45,58,0.55) 65%, rgba(12,45,58,0.72) 100%), 
+                       url('images/properties/villa-hero.jpg') center/cover;
+            background-attachment: fixed;
+            color: var(--tc-cream);
+            font-family: "Montserrat", system-ui, sans-serif;
+        }
+        
+        .quiz-step {
+            animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .treasure-header {
+            background: white;
+            padding: var(--tc-space-4) 0;
+            border-bottom: 1px solid rgba(12, 91, 107, 0.1);
+        }
+        
+        .treasure-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-4);
+        }
+        
+        .treasure-nav-links {
+            display: flex;
+            align-items: center;
+            gap: var(--space-6);
+        }
+        
+        .nav-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-family: var(--font-family-primary);
+            padding: var(--space-3) var(--space-5);
+            border-radius: var(--radius-full);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(120, 228, 217, 0.4);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 8px rgba(120, 228, 217, 0.15);
+        }
+        
+        .nav-back-btn:hover {
+            background: rgba(120, 228, 217, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(120, 228, 217, 0.25);
+        }
+        
+        .nav-back-btn:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+            transform: translateY(-1px);
+        }
+        
+        
+        .treasure-logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .treasure-logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .treasure-logo a:hover {
+            transform: scale(1.05);
+        }
+        
+        .treasure-logo a:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 4px;
+            border-radius: var(--radius-md);
+        }
+        
+        .treasure-logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .treasure-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-8) var(--space-4);
+            position: relative;
+        }
+        
+        .treasure-main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(120, 228, 217, 0.05) 100%);
+            pointer-events: none;
+        }
+        
+        .treasure-container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .treasure-headline {
+            font-family: "Montserrat", system-ui, sans-serif;
+            font-weight: 800;
+            line-height: 1.1;
+            font-size: clamp(32px, 5.2vw, 48px);
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,.4);
+            margin-bottom: 24px;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .treasure-description {
+            font-family: "Montserrat", system-ui, sans-serif;
+            font-weight: 600;
+            color: #E9F2F3;
+            font-size: clamp(16px, 1.6vw, 20px);
+            margin: 0 auto 32px;
+            max-width: 600px;
+            background: rgba(255,255,255,.08);
+            padding: 16px 24px;
+            border-radius: 14px;
+            backdrop-filter: saturate(120%) blur(2px);
+            text-align: center;
+            line-height: 1.5;
+            margin-bottom: var(--tc-space-6);
+            font-family: 'Montserrat', sans-serif;
+            opacity: 0.8;
+        }
+        
+        /* Interactive Treasure Map - Premium Design */
+        .interactive-treasure-map {
+            margin: var(--tc-space-12) 0;
+            position: relative;
+        }
+
+        /* Map Introduction */
+        .map-intro {
+            text-align: center;
+            margin-bottom: var(--tc-space-8);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: var(--tc-space-8);
+            border-radius: var(--tc-radius-2xl);
+            border: 1px solid rgba(120, 228, 217, 0.2);
+            box-shadow: var(--tc-shadow-soft);
+        }
+
+        .compass-icon {
+            font-size: 3rem;
+            margin-bottom: var(--tc-space-4);
+            animation: compassSpin 8s linear infinite;
+        }
+
+        .map-intro h3 {
+            font-size: var(--tc-h2);
+            color: var(--tc-navy);
+            margin-bottom: var(--tc-space-4);
+            font-weight: var(--tc-weight-bold);
+        }
+
+        .map-intro p {
+            font-size: var(--tc-body);
+            color: var(--tc-navy-light);
+            margin-bottom: var(--tc-space-6);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .exploration-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--tc-space-8);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: var(--tc-weight-bold);
+            color: var(--tc-primary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--tc-navy-light);
+            font-weight: var(--tc-weight-semibold);
+        }
+
+        /* Interactive Islands Map */
+        .treasure-islands-map {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--tc-space-6);
+            margin: var(--tc-space-8) 0;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 var(--tc-space-4);
+        }
+
+        /* Individual Treasure Island */
+        .treasure-island {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));
+            border-radius: var(--tc-radius-2xl);
+            padding: var(--tc-space-6);
+            border: 2px solid rgba(120, 228, 217, 0.3);
+            cursor: pointer;
+            transition: all var(--tc-duration-slow) var(--tc-ease-out);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .treasure-island:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(120, 228, 217, 0.3);
+            border-color: var(--tc-primary);
+        }
+
+        .treasure-island:active {
+            transform: translateY(-4px) scale(0.98);
+        }
+
+        /* Explored Island State */
+        .treasure-island.explored {
+            background: linear-gradient(145deg, rgba(120, 228, 217, 0.15), rgba(120, 228, 217, 0.1));
+            border-color: var(--tc-primary);
+            box-shadow: 0 8px 32px rgba(120, 228, 217, 0.2);
+        }
+
+        .treasure-island.explored .island-glow {
+            background: radial-gradient(circle, rgba(120, 228, 217, 0.4) 0%, transparent 70%);
+            animation: gentleGlow 2s ease-in-out infinite alternate;
+        }
+
+        .treasure-island.explored .island-status {
+            color: var(--tc-primary);
+            font-weight: var(--tc-weight-bold);
+        }
+
+        /* Island Visual Elements */
+        .island-visual {
+            position: relative;
+            text-align: center;
+            margin-bottom: var(--tc-space-4);
+        }
+
+        .island-icon {
+            font-size: 4rem;
+            margin-bottom: var(--tc-space-2);
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .island-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(120, 228, 217, 0.2) 0%, transparent 70%);
+            animation: gentleGlow 3s ease-in-out infinite alternate;
+            z-index: 1;
+        }
+
+        /* Island-Specific Animations */
+        .floating-hearts {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .floating-hearts::before,
+        .floating-hearts::after {
+            content: '💖';
+            position: absolute;
+            font-size: 1rem;
+            opacity: 0;
+            animation: floatUp 4s infinite;
+        }
+
+        .floating-hearts::after {
+            animation-delay: 2s;
+            left: 20px;
+        }
+
+        .floating-bubbles {
+            position: absolute;
+            top: 30px;
+            left: 30%;
+        }
+
+        .floating-bubbles::before,
+        .floating-bubbles::after {
+            content: '🫧';
+            position: absolute;
+            font-size: 1.2rem;
+            opacity: 0;
+            animation: bubble 5s infinite;
+        }
+
+        .floating-bubbles::after {
+            animation-delay: 2.5s;
+            left: 30px;
+        }
+
+        .floating-sparkles {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .floating-sparkles::before,
+        .floating-sparkles::after {
+            content: '✨';
+            position: absolute;
+            font-size: 1rem;
+            opacity: 0;
+            animation: sparkleFloat 3s infinite;
+        }
+
+        .floating-sparkles::after {
+            animation-delay: 1.5s;
+            right: 20px;
+        }
+
+        .floating-waves {
+            position: absolute;
+            bottom: 20px;
+            left: 20%;
+        }
+
+        .floating-waves::before,
+        .floating-waves::after {
+            content: '🌊';
+            position: absolute;
+            font-size: 1rem;
+            opacity: 0;
+            animation: wave 4s infinite;
+        }
+
+        .floating-waves::after {
+            animation-delay: 2s;
+            left: 40px;
+        }
+
+        .floating-confetti {
+            position: absolute;
+            top: 10px;
+            right: 30%;
+        }
+
+        .floating-confetti::before,
+        .floating-confetti::after {
+            content: '🎊';
+            position: absolute;
+            font-size: 1rem;
+            opacity: 0;
+            animation: confetti 3s infinite;
+        }
+
+        .floating-confetti::after {
+            animation-delay: 1.5s;
+            right: 25px;
+        }
+
+        .floating-zen {
+            position: absolute;
+            top: 15px;
+            left: 20%;
+        }
+
+        .floating-zen::before,
+        .floating-zen::after {
+            content: '🌸';
+            position: absolute;
+            font-size: 1rem;
+            opacity: 0;
+            animation: zenFloat 6s infinite;
+        }
+
+        .floating-zen::after {
+            animation-delay: 3s;
+            left: 40px;
+        }
+
+        /* Island Info */
+        .island-info h4 {
+            font-size: var(--tc-text-xl);
+            font-weight: var(--tc-weight-bold);
+            color: var(--tc-navy);
+            margin-bottom: var(--tc-space-2);
+        }
+
+        .island-info p {
+            font-size: var(--tc-text-base);
+            color: var(--tc-navy-light);
+            margin-bottom: var(--tc-space-3);
+        }
+
+        .villa-count {
+            font-size: var(--tc-text-sm);
+            font-weight: var(--tc-weight-semibold);
+            color: var(--tc-primary);
+            background: rgba(120, 228, 217, 0.1);
+            padding: var(--tc-space-2) var(--tc-space-3);
+            border-radius: var(--tc-radius-full);
+            display: inline-block;
+        }
+
+        .island-status {
+            font-size: var(--tc-text-sm);
+            color: var(--tc-navy-light);
+            font-style: italic;
+            margin-top: var(--tc-space-3);
+        }
+
+        /* Exploration Journey */
+        .exploration-journey {
+            text-align: center;
+            margin: var(--tc-space-8) 0;
+            padding: var(--tc-space-6);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--tc-radius-xl);
+            backdrop-filter: blur(10px);
+        }
+
+        .journey-message {
+            font-size: var(--tc-text-lg);
+            color: var(--tc-navy);
+            font-weight: var(--tc-weight-semibold);
+        }
+
+        /* Final Treasure Chest */
+        .treasure-chest-final {
+            text-align: center;
+            padding: var(--tc-space-10);
+            background: linear-gradient(145deg, rgba(231, 184, 104, 0.1), rgba(120, 228, 217, 0.1));
+            border-radius: var(--tc-radius-3xl);
+            border: 3px solid var(--tc-gold);
+            margin: var(--tc-space-10) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chest-visual {
+            margin-bottom: var(--tc-space-6);
+            position: relative;
+        }
+
+        .chest-icon {
+            font-size: 5rem;
+            margin-bottom: var(--tc-space-4);
+            animation: treasureBounce 2s ease-in-out infinite;
+        }
+
+        .chest-sparkles {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(231, 184, 104, 0.3) 0%, transparent 70%);
+            animation: sparkleGlow 2s ease-in-out infinite alternate;
+        }
+
+        .treasure-chest-final h3 {
+            font-size: var(--tc-h2);
+            color: var(--tc-navy);
+            margin-bottom: var(--tc-space-4);
+            font-weight: var(--tc-weight-bold);
+        }
+
+        .treasure-chest-final p {
+            font-size: var(--tc-body);
+            color: var(--tc-navy-light);
+            margin-bottom: var(--tc-space-6);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes celebrate {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15) rotate(5deg); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes pulse {
+            0% { 
+                box-shadow: var(--tc-shadow-glow);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(120, 228, 217, 0.6);
+                transform: scale(1.02);
+            }
+            100% { 
+                box-shadow: var(--tc-shadow-glow);
+                transform: scale(1);
+            }
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50px) scale(1.5);
+            }
+        }
+
+        @keyframes treasureSparkle {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotate(0deg);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(-30px) scale(1.3) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-60px) scale(0.8) rotate(360deg);
+            }
+        }
+
+        @keyframes spiralUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotate(0deg);
+            }
+            50% {
+                opacity: 0.9;
+                transform: translateY(-25px) scale(1.2) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9) rotate(360deg);
+            }
+        }
+
+        @keyframes messageSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px) scale(0.8);
+            }
+            20% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            80% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-10px) scale(0.9);
+            }
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        @keyframes fadeOutScale {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+        }
+
+        /* New Treasure Map Animations */
+        @keyframes compassSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes gentleGlow {
+            0% { 
+                opacity: 0.3;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% { 
+                opacity: 0.6;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-30px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-60px) scale(0.8);
+            }
+        }
+
+        @keyframes bubble {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0.5);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(-40px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-80px) scale(0.3);
+            }
+        }
+
+        @keyframes sparkleFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-25px) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50px) rotate(360deg);
+            }
+        }
+
+        @keyframes wave {
+            0% {
+                opacity: 0;
+                transform: translateX(0) scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(20px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(40px) scale(0.8);
+            }
+        }
+
+        @keyframes confetti {
+            0% {
+                opacity: 0;
+                transform: translateY(0) rotate(0deg) scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-30px) rotate(180deg) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-60px) rotate(360deg) scale(0.3);
+            }
+        }
+
+        @keyframes zenFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0.8);
+            }
+            33% {
+                opacity: 0.6;
+                transform: translateY(-20px) scale(1);
+            }
+            66% {
+                opacity: 0.8;
+                transform: translateY(-40px) scale(1.1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-60px) scale(0.7);
+            }
+        }
+
+        @keyframes treasureBounce {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-10px) scale(1.05);
+            }
+        }
+
+        @keyframes sparkleGlow {
+            0% {
+                opacity: 0.3;
+                transform: translateX(-50%) scale(1);
+            }
+            100% {
+                opacity: 0.6;
+                transform: translateX(-50%) scale(1.2);
+            }
+        }
+        
+        .treasure-map-progress::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #d4af37, #b8860b, #d4af37);
+            border-radius: var(--radius-xl);
+            z-index: -1;
+        }
+        
+        .treasure-map-svg {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+        }
+        
+        .treasure-island {
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .treasure-island.completed {
+            animation: islandDiscovered 0.6s ease-out;
+        }
+        
+        .treasure-island.completed circle {
+            fill: #32CD32 !important;
+            stroke: #228B22 !important;
+            opacity: 1 !important;
+            filter: drop-shadow(0 0 8px rgba(50, 205, 50, 0.6));
+        }
+        
+        .treasure-island.current {
+            animation: islandPulse 2s infinite;
+        }
+        
+        .treasure-island.current circle {
+            fill: #FFD700 !important;
+            stroke: #B8860B !important;
+            opacity: 1 !important;
+            filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.8));
+        }
+        
+        .island-emoji {
+            pointer-events: none;
+            user-select: none;
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+        }
+        
+        .island-label {
+            pointer-events: none;
+            user-select: none;
+            font-family: var(--font-family-primary);
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+        
+        .pirate-ship {
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
+        }
+        
+        .progress-text {
+            font-size: 1rem;
+            color: var(--dark-navy);
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+            margin-top: var(--space-2);
+        }
+        
+        @keyframes islandDiscovered {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.3);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes islandPulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+        
+        @keyframes treasureFound {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+            25% {
+                transform: scale(1.2) rotate(-5deg);
+            }
+            50% {
+                transform: scale(1.3) rotate(5deg);
+            }
+            75% {
+                transform: scale(1.2) rotate(-3deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+        
+        .primary-cta-button {
+            background: var(--tommy-teal);
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(0, 128, 128, 0.3);
+            min-height: 60px;
+            min-width: 280px;
+            margin: var(--space-4) 0;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .primary-cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 128, 128, 0.4);
+        }
+
+        .primary-cta-button:focus {
+            outline: 3px solid var(--tc-primary);
+            outline-offset: 4px;
+            transform: translateY(-2px);
+        }
+
+        .primary-cta-button:active {
+            transform: translateY(0);
+            transition: transform 0.1s ease;
+        }
+
+        .primary-cta-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+            opacity: 0.6;
+        }
+
+        .primary-cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .primary-cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .friction-reducer {
+            font-size: 0.95rem;
+            color: var(--dark-navy);
+            opacity: 0.6;
+            margin-top: var(--tc-space-2);
+        }
+
+        /* Enhanced Form Input UX */
+        .form-input-enhanced {
+            width: 100%;
+            padding: 18px 24px;
+            border: 2px solid var(--tc-primary);
+            border-radius: 25px;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-align: center;
+            font-family: var(--font-family-primary);
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            min-height: 60px;
+            box-sizing: border-box;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .form-input-enhanced:focus {
+            outline: 3px solid var(--tc-primary);
+            outline-offset: 4px;
+            border-color: var(--tc-navy);
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.02);
+        }
+
+        .form-input-enhanced:invalid {
+            border-color: var(--tc-error);
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+
+        .form-input-enhanced:valid {
+            border-color: var(--tc-success);
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+        }
+
+        .form-input-enhanced::placeholder {
+            color: rgba(10, 73, 86, 0.6);
+            font-weight: 500;
+        }
+
+        /* Mobile-optimized form container */
+        .form-container-mobile {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: var(--tc-space-4);
+        }
+
+        @media (max-width: 768px) {
+            .form-input-enhanced {
+                font-size: 16px; /* Prevents zoom on iOS */
+                padding: 16px 20px;
+            }
+
+            .form-container-mobile {
+                padding: var(--tc-space-3);
+            }
+
+            /* Mobile Treasure Map Optimizations */
+            .interactive-treasure-map {
+                margin: var(--tc-space-8) 0;
+            }
+
+            .map-intro {
+                padding: var(--tc-space-6);
+                margin-bottom: var(--tc-space-6);
+            }
+
+            .compass-icon {
+                font-size: 2.5rem;
+            }
+
+            .exploration-stats {
+                gap: var(--tc-space-6);
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .treasure-islands-map {
+                grid-template-columns: 1fr;
+                gap: var(--tc-space-4);
+                padding: 0 var(--tc-space-3);
+            }
+
+            .treasure-island {
+                min-height: 160px;
+                padding: var(--tc-space-4);
+            }
+
+            .island-icon {
+                font-size: 3rem;
+            }
+
+            .island-glow {
+                width: 100px;
+                height: 100px;
+            }
+
+            .treasure-chest-final {
+                padding: var(--tc-space-6);
+                margin: var(--tc-space-6) 0;
+            }
+
+            .chest-icon {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .map-intro {
+                padding: var(--tc-space-4);
+            }
+
+            .compass-icon {
+                font-size: 2rem;
+            }
+
+            .exploration-stats {
+                flex-direction: column;
+                gap: var(--tc-space-4);
+            }
+
+            .treasure-island {
+                min-height: 140px;
+                padding: var(--tc-space-3);
+            }
+
+            .island-icon {
+                font-size: 2.5rem;
+            }
+
+            .island-info h4 {
+                font-size: var(--tc-text-lg);
+            }
+
+            .villa-count {
+                font-size: var(--tc-text-xs);
+                padding: var(--tc-space-1) var(--tc-space-2);
+            }
+        }
+        
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: var(--tc-space-6);
+            margin-top: var(--tc-space-8);
+            flex-wrap: wrap;
+        }
+        
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: var(--tc-space-2);
+            font-size: 0.9rem;
+            color: var(--dark-navy);
+            opacity: 0.8;
+        }
+        
+        .trust-icon {
+            font-size: 1.2rem;
+            color: var(--tommy-teal);
+        }
+        
+        .typeform-container {
+            background: white;
+            border-radius: var(--tc-radius-2xl);
+            padding: var(--tc-space-8);
+            box-shadow: var(--tc-shadow-soft);
+            margin-bottom: var(--tc-space-6);
+        }
+        
+        .typeform-placeholder {
+            background: linear-gradient(135deg, var(--tc-sea), var(--tc-coral));
+            color: white;
+            padding: var(--tc-space-8);
+            border-radius: var(--tc-radius-lg);
+            text-align: center;
+            font-family: var(--tc-font-sans);
+        }
+        
+        .typeform-placeholder h3 {
+            font-size: var(--tc-h2);
+            margin-bottom: var(--tc-space-4);
+            font-weight: 700;
+        }
+        
+        .typeform-placeholder p {
+            font-size: var(--tc-body);
+            opacity: 0.9;
+            margin-bottom: var(--tc-space-6);
+        }
+        
+        .treasure-cta-button {
+            background: var(--tc-gold);
+            color: white;
+            padding: var(--tc-space-4) var(--tc-space-8);
+            border: none;
+            border-radius: var(--tc-radius-lg);
+            font-size: var(--tc-body);
+            font-weight: 700;
+            font-family: var(--tc-font-sans);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        .treasure-cta-button:hover,
+        .treasure-cta-button:focus-visible {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(199, 162, 74, 0.3);
+            outline: 2px solid var(--tc-gold);
+            outline-offset: 2px;
+        }
+        
+        .treasure-cta-button:active {
+            transform: translateY(0);
+        }
+        
+        .treasure-footer {
+            background: white;
+            padding: var(--tc-space-4) 0;
+            border-top: 1px solid rgba(12, 91, 107, 0.1);
+            text-align: center;
+        }
+        
+        .treasure-footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--tc-space-4);
+            color: var(--tc-ink);
+            font-family: var(--tc-font-sans);
+            opacity: 0.7;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .treasure-main {
+                padding: var(--tc-space-6) var(--tc-space-4);
+            }
+            
+            .treasure-headline {
+                font-size: clamp(28px, 8vw, 40px);
+                margin-bottom: var(--tc-space-4);
+            }
+            
+            .treasure-description {
+                margin-bottom: var(--tc-space-6);
+            }
+            
+            .typeform-container {
+                padding: var(--tc-space-6);
+            }
+            
+            .typeform-placeholder {
+                padding: var(--tc-space-6);
+            }
+        }
+        
+        @media (max-width: 320px) {
+            .treasure-main {
+                padding: var(--tc-space-4) var(--tc-space-3);
+            }
+            
+            .typeform-container {
+                padding: var(--tc-space-4);
+            }
+            
+            .typeform-placeholder {
+                padding: var(--tc-space-4);
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PVETEG7EB4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PVETEG7EB4');
+      
+      // Track treasure map start
+      gtag('event', 'tm_start', {
+        'page_title': 'Treasure Map',
+        'page_location': window.location.href,
+        'event_category': 'conversion_funnel',
+        'event_label': 'treasure_map_entry'
+      });
+    </script>
+
+    <!-- Plausible Analytics -->
+    <script defer data-domain="tommycoconut.com" src="https://plausible.io/js/plausible.js"></script>
+    <script>
+      window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }
+      
+      // Track page view
+      window.plausible('pageview');
+      
+      // Track treasure map start
+      window.plausible('tm_start', {
+        props: {
+          page: 'treasure_map',
+          funnel_step: 'entry'
+        }
+      });
+    </script>
+</head>
+<body class="treasure-map-page">
+    <!-- Minimal Header -->
+    <header class="treasure-header">
+        <nav class="treasure-nav">
+            <div class="treasure-logo">
+                <a href="index.html" title="Back to Tommy Coconut Home">
+                    <img src="images/icons/tommy-coconut-logo.png" alt="Tommy Coconut - Back to Home">
+                </a>
+            </div>
+            
+            <div class="treasure-nav-links">
+                <a href="index.html" class="nav-back-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m9 18 6-6-6-6"/>
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="treasure-map-container">
+        <div class="treasure-map-content">
+            <div class="treasure-map-header">
+                <h1>🗺️ Discover Your Perfect Villa Paradise</h1>
+                <p>Explore our curated islands and discover villa treasures tailored to your dream escape</p>
+            </div>
+            
+            <!-- Interactive Islands Grid -->
+            <div class="treasure-islands-grid">
+                <!-- Romance Island -->
+                <div class="treasure-island" data-island="romance">
+                    <div class="island-icon">💕</div>
+                    <h3 class="island-title">Romance Island</h3>
+                    <p class="island-subtitle">Intimate escapes for couples</p>
+                </div>
+
+                <!-- Family Island -->
+                <div class="treasure-island" data-island="family">
+                    <div class="island-icon">👨‍👩‍👧‍👦</div>
+                    <h3 class="island-title">Family Island</h3>
+                    <p class="island-subtitle">Adventures for everyone</p>
+                </div>
+
+                <!-- Luxury Island -->
+                <div class="treasure-island" data-island="luxury">
+                    <div class="island-icon">✨</div>
+                    <h3 class="island-title">Luxury Island</h3>
+                    <p class="island-subtitle">Premium indulgence</p>
+                </div>
+
+                <!-- Beach Island -->
+                <div class="treasure-island" data-island="beach">
+                    <div class="island-icon">🏖️</div>
+                    <h3 class="island-title">Beach Island</h3>
+                    <p class="island-subtitle">Steps from paradise</p>
+                </div>
+
+                <!-- Party Island -->
+                <div class="treasure-island" data-island="party">
+                    <div class="island-icon">🎉</div>
+                    <h3 class="island-title">Party Island</h3>
+                    <p class="island-subtitle">Epic celebrations</p>
+                </div>
+
+                <!-- Zen Island -->
+                <div class="treasure-island" data-island="zen">
+                    <div class="island-icon">🧘‍♀️</div>
+                    <h3 class="island-title">Zen Island</h3>
+                    <p class="island-subtitle">Peaceful retreats</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    
+    <!-- Villa Discovery Modal -->
+    <div class="villa-modal" id="villaModal">
+        <div class="villa-modal-content">
+            <div class="villa-modal-header">
+                <img class="villa-modal-image" id="modalImage" src="" alt="Villa">
+                <button class="villa-modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="villa-modal-body">
+                <h3 class="villa-modal-title" id="modalTitle">Villa Name</h3>
+                <p class="villa-modal-description" id="modalDescription">Villa description</p>
+                <div class="villa-modal-features" id="modalFeatures"></div>
+                <button class="villa-modal-cta" id="modalCTA">Explore This Villa</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Minimal Footer -->
+    <footer class="treasure-footer">
+        <div class="treasure-footer-content">
+            <p>&copy; 2025 Tommy Coconut. Part of the Coconut Cartel family.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Treasure Map System
+        class TreasureMap {
+            constructor() {
+                this.villaData = this.initVillaData();
+                this.init();
+            }
+            initVillaData() {
+                return {
+                    romance: {
+                        name: 'Dushi Hideaway',
+                        image: 'images/properties/dushi-hideaway.jpeg.avif',
+                        description: 'Intimate romantic retreat with private pool and sunset deck',
+                        features: ['Private Pool', '2 Bedrooms', 'Sunset Deck', 'Ocean Views'],
+                        url: 'dushi-hideaway.html'
+                    },
+                    family: {
+                        name: 'Happy Hideaway',
+                        image: 'images/properties/happy-hideaway.jpg',
+                        description: 'Perfect family villa with kids pool and safe environment',
+                        features: ['Kids Pool', '3 Bedrooms', 'Playground', 'Family Safe'],
+                        url: 'happy-hideaway.html'
+                    },
+                    luxury: {
+                        name: 'Villa Bayside Hill',
+                        image: 'images/properties/bayside-hill.jpeg.avif',
+                        description: 'Luxury villa with panoramic ocean views and infinity pool',
+                        features: ['Infinity Pool', '4 Bedrooms', 'Ocean Views', 'Car Included'],
+                        url: 'villa-bayside-hill.html'
+                    },
+                    beach: {
+                        name: 'Castaway Beach Villa',
+                        image: 'images/properties/castaway-beach.jpg',
+                        description: 'Beachfront villa with direct ocean access and private beach',
+                        features: ['Beachfront', '3 Bedrooms', 'Private Beach', 'Ocean Access'],
+                        url: 'castaway-beach.html'
+                    },
+                    party: {
+                        name: 'Sailaway Beach',
+                        image: 'images/properties/sailaway-beach.jpeg.avif',
+                        description: 'Perfect for groups with entertainment areas and pool',
+                        features: ['Entertainment', '4 Bedrooms', 'Pool', 'Group Friendly'],
+                        url: 'sailaway-beach.html'
+                    },
+                    zen: {
+                        name: 'Tropical Haven',
+                        image: 'images/properties/tropical-haven.jpg',
+                        description: 'Peaceful retreat with meditation deck and spa bathroom',
+                        features: ['Meditation Deck', '3 Bedrooms', 'Spa Bath', 'Peaceful'],
+                        url: 'tropical-haven.html'
+                    }
+                };
+            }
+
+            init() {
+                // Add click handlers to islands
+                const islands = document.querySelectorAll('.treasure-island');
+                islands.forEach(island => {
+                    island.addEventListener('click', () => {
+                        const islandType = island.dataset.island;
+                        this.showVilla(islandType);
+                    });
+                });
+
+                // Modal close handlers
+                const modal = document.getElementById('villaModal');
+                const closeBtn = document.getElementById('closeModal');
+                
+                closeBtn.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                });
+
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                    }
+                });
+            }
+
+            showVilla(islandType) {
+                const villa = this.villaData[islandType];
+                if (!villa) return;
+
+                const modal = document.getElementById('villaModal');
+                const modalImage = document.getElementById('modalImage');
+                const modalTitle = document.getElementById('modalTitle');
+                const modalDescription = document.getElementById('modalDescription');
+                const modalFeatures = document.getElementById('modalFeatures');
+                const modalCTA = document.getElementById('modalCTA');
+
+                modalImage.src = villa.image;
+                modalImage.alt = villa.name;
+                modalTitle.textContent = villa.name;
+                modalDescription.textContent = villa.description;
+
+                modalFeatures.innerHTML = villa.features
+                    .map(feature => `<span class="villa-feature-tag">${feature}</span>`)
+                    .join('');
+
+                modalCTA.onclick = () => {
+                    window.open(villa.url, '_blank');
+                };
+
+                modal.classList.add('active');
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new TreasureMap();
+        });
+    </script>
+
+    <style>
+        .quiz-step {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .option-grid.group-size {
+            grid-template-columns: repeat(4, 1fr);
+            max-width: 400px;
+        }
+
+        .option-btn {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid rgba(120, 228, 217, 0.3);
+            border-radius: 16px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: var(--font-family-primary);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 60px;
+            box-shadow: 0 8px 32px rgba(120, 228, 217, 0.1);
+        }
+        
+        .option-with-image {
+            padding: 1rem;
+        }
+        
+        .option-image {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 100%);
+        }
+        
+        .option-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(120, 228, 217, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .option-btn:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(120, 228, 217, 0.25);
+            background: linear-gradient(135deg, rgba(120, 228, 217, 0.08), rgba(248,250,252,1));
+        }
+        
+        .option-btn:hover::before {
+            left: 100%;
+        }
+
+        .option-btn:focus {
+            outline: 3px solid var(--tc-primary);
+            outline-offset: 4px;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .option-btn:active {
+            transform: translateY(0) scale(0.98);
+            transition: transform 0.1s ease;
+        }
+
+        .option-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-text {
+            font-weight: 600;
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+        
+        .option-subtext {
+            font-size: 0.85rem;
+            color: #666;
+            opacity: 0.8;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        .size-btn {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #005A5B;
+        }
+
+        .villa-match-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .results-cta {
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .treasure-nav {
+                flex-direction: column;
+                gap: var(--space-4);
+                padding: var(--space-4) var(--space-4);
+            }
+            
+            .treasure-nav-links {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            
+            .nav-back-btn {
+                min-width: 200px;
+                justify-content: center;
+                font-size: var(--text-base);
+                padding: var(--space-4) var(--space-6);
+            }
+            
+            .treasure-map-progress {
+                padding: var(--space-3);
+                max-width: 400px;
+            }
+            
+            .treasure-islands-grid {
+                max-width: 260px;
+                gap: var(--space-2);
+            }
+            
+            .treasure-island-card {
+                min-height: 70px;
+                min-width: 70px;
+            }
+            
+            .island-label {
+                font-size: 9px !important;
+            }
+            
+            .island-emoji {
+                font-size: 20px !important;
+            }
+            
+            .progress-text {
+                font-size: 0.9rem;
+            }
+            
+            .option-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+            
+            .option-grid.group-size {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .primary-cta-button {
+                min-width: 100%;
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .treasure-map-progress {
+                padding: var(--space-2);
+                max-width: 320px;
+            }
+            
+            .treasure-islands-grid {
+                max-width: 240px;
+                gap: var(--space-1);
+            }
+            
+            .treasure-island-card {
+                min-height: 60px;
+                min-width: 60px;
+            }
+            
+            .island-label {
+                font-size: 8px !important;
+            }
+            
+            .island-emoji {
+                font-size: 18px !important;
+            }
+            
+            .progress-text {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</body>
+</html>

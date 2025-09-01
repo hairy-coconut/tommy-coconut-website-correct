@@ -1,0 +1,478 @@
+/* Our Story Page - Premium Redesign */
+
+/* Section 1: Page Header */
+.page-header {
+    background: var(--dark-navy);
+    color: var(--neutral-white);
+    padding: 40px 0 80px;
+    text-align: center;
+}
+
+.page-header h1 {
+    color: var(--neutral-white);
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.page-header p {
+    color: var(--neutral-white);
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+
+/* Section 2: The Legend of Tommy Coconut */
+.legend-section {
+    padding: 80px 0;
+    background: var(--sand);
+}
+
+.legend-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.legend-text h2 {
+    color: var(--dark-navy);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.legend-text p {
+    color: var(--dark-navy);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.legend-image {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.legend-image:hover {
+    transform: translateY(-10px);
+}
+
+.legend-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.legend-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Section 3: From One Family to Another */
+.handover-section {
+    padding: 80px 0;
+    background: var(--neutral-white);
+}
+
+.handover-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.handover-image {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.handover-image:hover {
+    transform: translateY(-10px);
+}
+
+.handover-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.handover-image:hover img {
+    transform: scale(1.05);
+}
+
+.handover-text h2 {
+    color: var(--dark-navy);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.handover-text p {
+    color: var(--dark-navy);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+/* Section 4: The Family Behind Your Experience - Player Cards */
+.architects-section {
+    padding: 80px 0;
+    background: var(--neutral-light);
+}
+
+.architects-section h2 {
+    color: var(--dark-navy);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.architects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.architect-card {
+    background: var(--neutral-white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.architect-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.architect-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.architect-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.architect-card:hover .architect-image img {
+    transform: scale(1.05);
+}
+
+.architect-info {
+    padding: 2rem;
+    text-align: center;
+}
+
+.architect-info h3 {
+    color: var(--dark-navy);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.architect-role {
+    color: var(--primary);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.architect-info p {
+    color: var(--dark-navy);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+/* Section 5: Why We're Not Like 'The Other Guys' - Enhanced Philosophy */
+.philosophy-section {
+    padding: 80px 0;
+    background: var(--neutral-white);
+}
+
+.philosophy-section h2 {
+    color: var(--dark-navy);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.philosophy-card {
+    background: var(--neutral-light);
+    border-radius: 20px;
+    padding: 3rem;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.philosophy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.philosophy-card.our-way {
+    background: linear-gradient(135deg, var(--primary), #0a4956);
+    color: var(--neutral-white);
+    border: 3px solid var(--primary);
+}
+
+.philosophy-card.their-way {
+    background: var(--neutral-light);
+    border: 3px solid #e0e0e0;
+}
+
+.philosophy-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-align: center;
+}
+
+.philosophy-card.our-way h3 {
+    color: var(--neutral-white);
+}
+
+.philosophy-card.their-way h3 {
+    color: var(--dark-navy);
+}
+
+.philosophy-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.philosophy-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.philosophy-item:hover {
+    transform: translateX(10px);
+}
+
+.philosophy-card.our-way .philosophy-item {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.philosophy-card.their-way .philosophy-item {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.philosophy-item i {
+    font-size: 1.2rem;
+    width: 30px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.philosophy-card.our-way .philosophy-item i {
+    color: var(--neutral-white);
+}
+
+.philosophy-card.their-way .philosophy-item i {
+    color: #ff6b6b;
+}
+
+.philosophy-item span {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.philosophy-card.our-way .philosophy-item span {
+    color: var(--neutral-white);
+}
+
+.philosophy-card.their-way .philosophy-item span {
+    color: var(--dark-navy);
+}
+
+/* Section 6: Come Find Your Treasure - No changes required */
+.invitation-section {
+    padding: 80px 0;
+    background: var(--tommy-teal);
+    color: var(--neutral-white);
+    text-align: center;
+}
+
+.invitation-content h2 {
+    color: var(--neutral-white);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.invitation-content p {
+    color: var(--neutral-white);
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.invitation-cta {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.invitation-cta .btn {
+    min-width: 200px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .philosophy-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .architects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .legend-content,
+    .handover-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .architects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .page-header p {
+        font-size: 1.1rem;
+    }
+    
+    .legend-text h2,
+    .handover-text h2,
+    .architects-section h2,
+    .philosophy-section h2,
+    .invitation-content h2 {
+        font-size: 2rem;
+    }
+    
+    .legend-image img,
+    .handover-image img {
+        height: 300px;
+    }
+    
+    .architect-image {
+        height: 200px;
+    }
+    
+    .philosophy-card {
+        padding: 2rem;
+    }
+    
+    .invitation-cta {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header {
+        padding: 80px 0 60px;
+    }
+    
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .page-header p {
+        font-size: 1rem;
+    }
+    
+    .legend-text h2,
+    .handover-text h2,
+    .architects-section h2,
+    .philosophy-section h2,
+    .invitation-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .legend-image img,
+    .handover-image img {
+        height: 250px;
+    }
+    
+    .architect-image {
+        height: 180px;
+    }
+    
+    .philosophy-card {
+        padding: 1.5rem;
+    }
+    
+    .philosophy-item {
+        padding: 0.75rem;
+    }
+    
+    .philosophy-item span {
+        font-size: 0.9rem;
+    }
+} 
